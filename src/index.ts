@@ -1,9 +1,14 @@
 import {Client} from "pg";
-const pgClient = new Client("postgresql://neondb_owner:lDE72uVYQNBq@ep-empty-glade-a5fof37v.us-east-2.aws.neon.tech/neondb?sslmode=require");
 
-
-import express  from "express"
+import { urlData } from "./config";
+import express  from "express";
 const app = express();
+
+
+const pgClient = new Client(urlData);
+
+
+
 
 async function pgClientConnect(){
     await pgClient.connect();
@@ -12,5 +17,3 @@ async function pgClientConnect(){
 }
 
 pgClientConnect();
-
-console.log("update")
